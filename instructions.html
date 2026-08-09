@@ -276,11 +276,11 @@
           <p>Envía un pago por <strong id="amount">---</strong> a:</p>
 	  <div class="pay-details-wrapper">
             <div class="pay-details" id="bank-details">
-	      Brunita<br>
-	      RUT: 192012325<br>
-	      Mercado Pago<br>
-	      Cuenta Vista<br>
-	      Número de cuenta: 1088164877
+	      <div>Brunita</div>
+	      <div>RUT: 192012325</div>
+	      <div>Mercado Pago</div>
+	      <div>Cuenta Vista</div>
+	      <div>Número de cuenta: 1088164877</div>
 	    </div>
 	    <button type="button" class="btn-copy" id="copy-btn" onclick="copyPayDetails()">
 	      Copiar
@@ -292,6 +292,8 @@
           <h2>2. Envía el comprobante</h2>
           <p>Junto con el código de reserva (<strong id="reference-code">---</strong>).</p>
 	</div>
+
+	<p class="note">Existe la opción de pagar con tarjeta de crédito o débito. Contáctame directamente con tu código. Este servicio tiene un recargo adicional.</p>
 
 	<p class="note">Los ganadores serán notificados via WhatsApp una vez realizado el sorteo.</p>
       </div>
@@ -311,7 +313,7 @@
       document.getElementById('amount').textContent = "$" + amount.toLocaleString();
 
       function copyPayDetails() {
-	  const textToCopy = document.getElementById('bank-details').textContent.trim();
+	  const textToCopy = document.getElementById('bank-details').innerText.trim();
 	  const btn = document.getElementById('copy-btn');
 
 	  navigator.clipboard.writeText(textToCopy).then(() => {
