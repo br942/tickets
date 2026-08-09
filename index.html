@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rifa</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .prize-list {
+      list-style: none;
+      margin-bottom: 1.75rem;
+      border: 3px solid #fff;
+      border-radius: 16px;
+      box-sizing: border-box;
+      padding: 20px;
+      padding-bottom: 8px;
+    }
+
+    .prize-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .prize-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -0.1rem;
+    }
+
+    .prize-list strong {
+      color: var(--text);
+    }
+
+    .rules-list {
+      list-style: none;
+      margin-bottom: 1.75rem;
+    }
+
+    .rules-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .rules-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -0.1rem;
+    }
+
+    .rules-list strong {
+      color: var(--text);
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background-color: var(--accent);
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <div class="card">
+      <span class="badge">Cupos limitados</span>
+      <h1>Brunita</h1>
+      <p>Compra un número para tener la oportunidad de ganar. 50 cupos disponibles.</p>
+      <p>El número tiene un valor de <strong>$10.000</strong>.</p>
+
+      <h2>Premios</h2>
+
+      <ul class="prize-list">
+        <li><strong>Primer Premio:</strong> 1 hora de atención.</li>
+        <li><strong>Segundo Premio:</strong> Media hora de atención.</li>
+        <li><strong>Tercer Premio:</strong> Atención momento express (15 minutos.)</li>
+      </ul>
+
+      <h2>Reglas</h2>
+
+      <ul class="rules-list">
+        <li><strong>Código Único:</strong> Recibirás un código corto luego de rellenar el formulario.</li>
+        <li><strong>Verificación:</strong> Envía tu pago junto con tu código. Reservas sin pago expiran dento de una hora.</li>
+        <li><strong>Sorteo:</strong> El ganador será seleccionado al azar una vez que se completen los cupos.</li>
+      </ul>
+
+      <a id="claim-btn" href="#" class="btn">Reserva tu número</a>
+    </div>
+  </main>
+
+  <script>
+    const TALLY_BASE_URL = "https://tally.so/r/eqGkZq";
+
+    function generateShortCode() {
+      const array = new Uint8Array(3);
+      window.crypto.getRandomValues(array);
+      const hex = Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase();
+      return `BR-${hex}`;
+    }
+
+    const shortCode = generateShortCode();
+
+    const claimBtn = document.getElementById('claim-btn');
+    claimBtn.href = `${TALLY_BASE_URL}?code=${encodeURIComponent(shortCode)}`;
+  </script>
+
+</body>
+</html>
