@@ -1,266 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rifa</title>
-  <style>
-  :root {
-    --bg: #ffffff;
-    --card: #ffffff;
-    --text: #0f172a;
-    --text-muted: #64748b;
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --border: #e2e8f0;
-    --code-bg: #f8fafc;
-  }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa</title>
+    <style>
+      :root {
+	  --bg: #ffffff;
+	  --card: #ffffff;
+	  --text: #0f172a;
+	  --text-muted: #64748b;
+	  --accent: #2563eb;
+	  --accent-hover: #1d4ed8;
+	  --border: #e2e8f0;
+	  --code-bg: #f8fafc;
+      }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+      * {
+	  box-sizing: border-box;
+	  margin: 0;
+	  padding: 0;
+      }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 1.5rem 1rem;
-  }
+      body {
+	  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	  background-color: var(--bg);
+	  color: var(--text);
+	  line-height: 1.6;
+	  display: flex;
+	  justify-content: center;
+	  min-height: 100vh;
+	  padding: 1.5rem 1rem;
+      }
 
-  .container {
-    width: 100%;
-    max-width: 480px;
-    margin: auto;
-  }
+      .container {
+	  width: 100%;
+	  max-width: 480px;
+	  margin: auto;
+      }
 
-  .card {
-    background-color: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.75rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  }
+      .card {
+	  background-color: var(--card);
+	  border: 1px solid var(--border);
+	  border-radius: 12px;
+	  padding: 1.75rem;
+	  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      }
 
-  h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-  }
+      h1 {
+	  font-size: 1.5rem;
+	  font-weight: 700;
+	  margin-bottom: 0.5rem;
+	  color: var(--text);
+      }
 
-  p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 1.25rem;
-  }
+      h2 {
+	  font-size: 1.2rem;
+	  font-weight: 600;
+	  margin-bottom: 0.5rem;
+	  color: var(--text);
+      }
 
-  .badge {
-    display: inline-block;
-    background: #eff6ff;
-    color: var(--accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.25rem 0.6rem;
-    border-radius: 9999px;
-    margin-bottom: 1rem;
-    border: 1px solid #dbeafe;
-  }
+      p {
+	  color: var(--text-muted);
+	  font-size: 0.95rem;
+	  margin-bottom: 1.25rem;
+      }
 
-  .code-display, .code-box {
-    background-color: var(--code-bg);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
-    text-align: center;
-    margin-bottom: 1.25rem;
-  }
+      .badge {
+	  display: inline-block;
+	  background: #eff6ff;
+	  color: var(--accent);
+	  font-size: 0.75rem;
+	  font-weight: 600;
+	  padding: 0.25rem 0.6rem;
+	  border-radius: 9999px;
+	  margin-bottom: 1rem;
+	  border: 1px solid #dbeafe;
+      }
 
-  .code-display span, .code-label {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
-  }
+      .code-display, .code-box {
+	  background-color: var(--code-bg);
+	  border: 1px dashed var(--border);
+	  border-radius: 8px;
+	  padding: 1rem 1.25rem;
+	  text-align: center;
+	  margin-bottom: 1.25rem;
+      }
 
-  .code-display strong, .code-value {
-    font-family: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-  }
+      .code-display span, .code-label {
+	  display: block;
+	  font-size: 0.75rem;
+	  text-transform: uppercase;
+	  color: var(--text-muted);
+	  letter-spacing: 0.05em;
+	  margin-bottom: 0.25rem;
+      }
 
-  .prize-list {
-    list-style: none;
-    margin-bottom: 1.75rem;
-    border: 3px solid #e2e8f0;
-    border-radius: 16px;
-    box-sizing: border-box;
-    padding: 20px;
-    padding-bottom: 8px;
-    margin-top: 1rem;
-  }
+      .code-display strong, .code-value {
+	  font-family: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+	  font-size: 1.5rem;
+	  font-weight: 700;
+	  color: var(--accent);
+	  letter-spacing: 0.05em;
+      }
 
-  .prize-list li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
+      .prize-list {
+	  list-style: none;
+	  margin-bottom: 1.75rem;
+	  border: 3px solid #e2e8f0;
+	  border-radius: 16px;
+	  box-sizing: border-box;
+	  padding: 20px;
+	  padding-bottom: 8px;
+	  margin-top: 1rem;
+      }
 
-  .prize-list li::before {
-    content: "•";
-    color: var(--accent);
-    font-weight: bold;
-    font-size: 1.2rem;
-    position: absolute;
-    left: 0;
-    top: -0.1rem;
-  }
+      .prize-list li {
+	  position: relative;
+	  padding-left: 1.5rem;
+	  margin-bottom: 0.75rem;
+	  font-size: 1rem;
+	  color: var(--text-muted);
+      }
 
-  .prize-list strong {
-    color: var(--text);
-  }
+      .prize-list li::before {
+	  content: "•";
+	  color: var(--accent);
+	  font-weight: bold;
+	  font-size: 1.2rem;
+	  position: absolute;
+	  left: 0;
+	  top: -0.1rem;
+      }
 
-  .rules-list {
-    list-style: none;
-    margin-bottom: 1.75rem;
-  }
+      .prize-list strong {
+	  color: var(--text);
+      }
 
-  .rules-list li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
+      .rules-list {
+	  list-style: none;
+	  margin-bottom: 1.75rem;
+      }
 
-  .rules-list li::before {
-    content: "•";
-    color: var(--accent);
-    font-weight: bold;
-    font-size: 1.2rem;
-    position: absolute;
-    left: 0;
-    top: -0.1rem;
-  }
+      .rules-list li {
+	  position: relative;
+	  padding-left: 1.5rem;
+	  margin-bottom: 0.75rem;
+	  font-size: 0.9rem;
+	  color: var(--text-muted);
+      }
 
-  .rules-list strong {
-    color: var(--text);
-  }
+      .rules-list li::before {
+	  content: "•";
+	  color: var(--accent);
+	  font-weight: bold;
+	  font-size: 1.2rem;
+	  position: absolute;
+	  left: 0;
+	  top: -0.1rem;
+      }
 
-  .instruction-step {
-    background-color: var(--code-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
+      .rules-list strong {
+	  color: var(--text);
+      }
 
-  .instruction-step h2 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 0.25rem;
-  }
+      .instruction-step {
+	  background-color: var(--code-bg);
+	  border: 1px solid var(--border);
+	  border-radius: 8px;
+	  padding: 1rem;
+	  margin-bottom: 1rem;
+      }
 
-  .instruction-step p {
-    font-size: 0.85rem;
-    margin-bottom: 0;
-  }
+      .instruction-step h2 {
+	  font-size: 0.9rem;
+	  font-weight: 600;
+	  color: var(--text);
+	  margin-bottom: 0.25rem;
+      }
 
-  .pay-details {
-    font-family: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
-    font-size: 0.85rem;
-    background: #ffffff;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    margin-top: 0.5rem;
-    word-break: break-all;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
+      .instruction-step p {
+	  font-size: 0.85rem;
+	  margin-bottom: 0;
+      }
 
-  .btn {
-    display: block;
-    width: 100%;
-    background-color: var(--accent);
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
-    padding: 0.85rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-    margin-bottom: 1rem;
-  }
+      .pay-details {
+	  font-family: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+	  font-size: 0.85rem;
+	  background: #ffffff;
+	  padding: 0.5rem 0.75rem;
+	  border-radius: 6px;
+	  margin-top: 0.5rem;
+	  word-break: break-all;
+	  color: var(--text);
+	  border: 1px solid var(--border);
+      }
 
-  .btn:hover {
-    background-color: var(--accent-hover);
-  }
+      .btn {
+	  display: block;
+	  width: 100%;
+	  background-color: var(--accent);
+	  color: #ffffff;
+	  font-weight: 600;
+	  font-size: 1rem;
+	  text-align: center;
+	  padding: 0.85rem 1rem;
+	  border-radius: 8px;
+	  text-decoration: none;
+	  transition: background-color 0.2s ease;
+	  margin-bottom: 1rem;
+      }
 
-  .note {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 1.25rem;
-  }
-  </style>
-</head>
-<body>
+      .btn:hover {
+	  background-color: var(--accent-hover);
+      }
 
-  <main class="container">
-    <div class="card">
-      <span class="badge">Cupos limitados</span>
-      <h1>Brunita</h1>
-      <p>Compra un número para tener la oportunidad de ganar. 50 cupos disponibles.</p>
-      <p>El número tiene un valor de <strong>$10.000</strong>.</p>
+      .note {
+	  font-size: 0.8rem;
+	  color: var(--text-muted);
+	  text-align: center;
+	  margin-top: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
 
-      <h2>Premios</h2>
+    <main class="container">
+      <div class="card">
+	<span class="badge">Cupos limitados</span>
+	<h1>Brunita</h1>
+	<p>Compra un número para tener la oportunidad de ganar. 50 cupos disponibles.</p>
+	<p>El número tiene un valor de <strong>$10.000</strong>.</p>
 
-      <ul class="prize-list">
-        <li><strong>Primer Premio:</strong> 1 hora de atención.</li>
-        <li><strong>Segundo Premio:</strong> Media hora de atención.</li>
-        <li><strong>Tercer Premio:</strong> Atención momento express (15 minutos.)</li>
-      </ul>
+	<h2>Premios</h2>
 
-      <a id="claim-btn" href="#" class="btn">Reserva tu número</a>
+	<ul class="prize-list">
+          <li><strong>Primer Premio:</strong> 1 hora de atención.</li>
+          <li><strong>Segundo Premio:</strong> Media hora de atención.</li>
+          <li><strong>Tercer Premio:</strong> Atención momento express (15 minutos.)</li>
+	</ul>
 
-      <h2>Reglas</h2>
+	<a id="claim-btn" href="#" class="btn">Reserva tu número</a>
 
-      <ul class="rules-list">
-        <li><strong>Código Único:</strong> Recibirás un código corto luego de rellenar el formulario.</li>
-        <li><strong>Verificación:</strong> Envía tu pago junto con tu código. Reservas sin pago expiran dento de una hora.</li>
-        <li><strong>Sorteo:</strong> El ganador será seleccionado al azar una vez que se completen los cupos.</li>
-      </ul>
-    </div>
-  </main>
+	<h2>Reglas</h2>
 
-  <script>
-    const TALLY_BASE_URL = "https://tally.so/r/eqGkZq";
+	<ul class="rules-list">
+          <li><strong>Código Único:</strong> Recibirás un código corto luego de rellenar el formulario.</li>
+          <li><strong>Verificación:</strong> Envía tu pago junto con tu código. Reservas sin pago expiran dento de una hora.</li>
+          <li><strong>Sorteo:</strong> El ganador será seleccionado al azar una vez que se completen los cupos.</li>
+	</ul>
+      </div>
+    </main>
 
-    function generateShortCode() {
-      const array = new Uint8Array(3);
-      window.crypto.getRandomValues(array);
-      const hex = Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase();
-      return `BR-${hex}`;
-    }
+    <script>
+      const TALLY_BASE_URL = "https://tally.so/r/eqGkZq";
 
-    const shortCode = generateShortCode();
+      function generateShortCode() {
+	  const array = new Uint8Array(3);
+	  window.crypto.getRandomValues(array);
+	  const hex = Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase();
+	  return `BR-${hex}`;
+      }
 
-    const claimBtn = document.getElementById('claim-btn');
-    claimBtn.href = `${TALLY_BASE_URL}?code=${encodeURIComponent(shortCode)}`;
-  </script>
+      const shortCode = generateShortCode();
 
-</body>
+      const claimBtn = document.getElementById('claim-btn');
+      claimBtn.href = `${TALLY_BASE_URL}?code=${encodeURIComponent(shortCode)}`;
+    </script>
+
+  </body>
 </html>
