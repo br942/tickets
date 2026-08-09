@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrucciones</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+      --code-bg: #0284c7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .code-box {
+      background-color: rgba(56, 189, 248, 0.08);
+      border: 1px dashed var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .code-value {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .instruction-step {
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .instruction-step h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .instruction-step p {
+      font-size: 0.85rem;
+      margin-bottom: 0;
+    }
+
+    .pay-details {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      background: #0f172a;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+      word-break: break-all;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <div class="card">
+      <h1>Número Reservado</h1>
+      <p>Completa el pago dentro de la siguiente hora para finalizar tu registro.</p>
+
+      <div class="code-box">
+        <div class="code-label">Tu código de reserva</div>
+        <div class="code-value" id="ticket-code">---</div>
+      </div>
+
+      <div class="instruction-step">
+        <h2>1. Envía el pago</h2>
+        <p>Envía un pago por <strong id="amount">---</strong> a:</p>
+        <div class="pay-details">DETALLES_DE_PAGO_AQUI</div>
+      </div>
+
+      <div class="instruction-step">
+        <h2>2. Envía el comprobante</h2>
+        <p>Junto con el código de reserva (<strong id="reference-code">---</strong>).</p>
+      </div>
+
+      <p class="note">Los ganadores serán notificados via WhatsApp una vez realizado el sorteo.</p>
+    </div>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const rawCode = urlParams.get('code');
+    const rawTickets = urlParams.get('tickets');
+    
+    const displayCode = rawCode ? rawCode.trim() : 'RESERVADO';
+    const tickets = rawTickets ? parseInt(rawTickets, 10) : 1;
+    const amount = tickets * 10000;
+
+    document.getElementById('ticket-code').textContent = displayCode;
+    document.getElementById('reference-code').textContent = displayCode;
+    document.getElementById('amount').textContent = "$" + amount.toLocaleString();
+  </script>
+
+</body>
+</html>
