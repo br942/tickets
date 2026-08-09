@@ -290,10 +290,10 @@
 
 	<div class="instruction-step">
           <h2>2. Envía el comprobante</h2>
-          <p>Junto con el código de reserva (<strong id="reference-code">---</strong>).</p>
+          <p>Junto con el código de reserva (<strong id="reference-code">---</strong>) al <a id="send-voucher-link" href="#">+56 9 8316 0411</a></p>
 	</div>
 
-	<p class="note">Existe la opción de pagar con tarjeta de crédito o débito. Contáctame directamente con tu código. Este servicio tiene un recargo adicional.</p>
+	<p class="note">Existe la opción de pagar con tarjeta de crédito o débito. <a id="card-payment-link" href="#">Contáctame directamente con tu código.</a> Este servicio tiene un recargo adicional.</p>
 
 	<p class="note">Los ganadores serán notificados via WhatsApp una vez realizado el sorteo.</p>
       </div>
@@ -311,6 +311,17 @@
       document.getElementById('ticket-code').textContent = displayCode;
       document.getElementById('reference-code').textContent = displayCode;
       document.getElementById('amount').textContent = "$" + amount.toLocaleString();
+
+      const paymentMessage = `Hola Brunita! Mi código de reserva es el ${displayCode}.`;
+      const voucherMessage = `${paymentMessage} Te adjunto el comprobante de pago:`;
+      const cardPaymentMessage = `${paymentMessage} Quiero pagar con tarjeta.`;
+      const sendVoucherLink = document.getElementById('send-voucher-link');
+      const cardPaymentLink = document.getElementById('card-payment-link');
+      const WANumber = "56983160411";
+      const WAMeLink = `https://wa.me/${WANumber}`;
+
+      sendVoucherLink.href = `${WAMeLink}?text=${encodeURIComponent(voucherMessage)}`;
+      cardPaymentLink.href = `${WAMeLink}?text=${encodeURIComponent(cardPaymentMessage)}`;
 
       function copyPayDetails() {
 	  const textToCopy = document.getElementById('bank-details').innerText.trim();
