@@ -6,13 +6,13 @@
     <title>Rifa</title>
     <style>
       :root {
-	  --bg: #ffffff;
-	  --card: #ffffff;
-	  --text: #0f172a;
-	  --text-muted: #64748b;
-	  --accent: #2563eb;
-	  --accent-hover: #1d4ed8;
-	  --border: #e2e8f0;
+	  --bg: #f5edeb;
+	  --card: #f5edeb;
+	  --text: #c37978;
+	  --text-muted: #9f7670;
+	  --accent: #edc5bd;
+	  --accent-hover: #eca9a3;
+	  --border: #e0d1cc;
 	  --code-bg: #f8fafc;
       }
 
@@ -69,14 +69,14 @@
 
       .badge {
 	  display: inline-block;
-	  background: #eff6ff;
+	  background: var(--bg);
 	  color: var(--accent);
 	  font-size: 0.75rem;
 	  font-weight: 600;
 	  padding: 0.25rem 0.6rem;
 	  border-radius: 9999px;
 	  margin-bottom: 1rem;
-	  border: 1px solid #dbeafe;
+	  border: 1px solid var(--border);
       }
 
       .code-display, .code-box {
@@ -108,7 +108,7 @@
       .prize-list {
 	  list-style: none;
 	  margin-bottom: 1.75rem;
-	  border: 3px solid #e2e8f0;
+	  border: 3px solid var(--border);
 	  border-radius: 16px;
 	  box-sizing: border-box;
 	  padding: 20px;
